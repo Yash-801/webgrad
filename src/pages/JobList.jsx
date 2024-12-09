@@ -123,7 +123,32 @@ const JobList = () => {
           <span className="text-[#5F97C5]"> new job </span>
           today
         </p>
-        <p className="text-[#676970]">Browse through job listings targeted at interns and graduates.</p>
+        <p className="text-[#676970]">
+          Browse through job listings targeted at interns and graduates.
+        </p>
+      </div>
+      <div className="flex flex-row w-full">
+        <div className="w-1/2">
+          <input
+            type="text"
+            placeholder="What position are you looking for ?"
+            className="border border-gray-300 h-10 text-xs p-2 mr-2 w-full"
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Skill"
+            className="border border-gray-300 h-10 text-xs p-2 mr-2 "
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Location"
+            className="border border-gray-300 h-10 text-xs p-2 mr-2 "
+          />
+        </div>
       </div>
       <div className="p-6 bg-gray-100">
         {jobData.map((job) => (

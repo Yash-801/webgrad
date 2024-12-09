@@ -1,6 +1,5 @@
 import React from "react";
 import AiCover2 from "../assets/AiCover2.png";
-import logo from "../assets/logo.jpg";
 import frontend from "../assets/frontend.png";
 import car from "../assets/car.jpeg";
 import compny from "../assets/compny.jpg";
@@ -78,9 +77,9 @@ const Home = ({ onLogout }) => {
           <div className="mt-4">
             <h1 className="font-medium text-3xl">Welcome Home Zadafiya Yash</h1>
             <img src={AiCover2} alt="AiCover2" className="h-72 w-full mt-9" />
-            <div className="flex mt-7">
+            <div className="flex my-7">
               <img
-                src={logo}
+                src={AiCover2}
                 alt="logo"
                 className="profileimg2 h-24 w-24 object-cover"
               />
