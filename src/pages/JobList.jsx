@@ -219,7 +219,10 @@ const JobList = () => {
                   {job.description}
                 </p>
               </div>
-              <button className="text-gray-400 hover:text-gray-600">
+              <button
+                aria-label="Bookmark this job"
+                className="text-gray-400 hover:text-gray-600"
+              >
                 <img src={Bookmark} alt="Bookmark" className="h-5 w-5" />
               </button>
             </div>
