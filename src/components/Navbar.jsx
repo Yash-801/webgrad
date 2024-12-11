@@ -8,6 +8,10 @@ import logo from "../assets/logo.jpg";
 import downarrow from "../assets/downarrow.svg";
 import grad from "../assets/grad.png";
 import { NavLink } from "react-router-dom";
+import LogOut from "../assets/LogOut.svg";
+import Help from "../assets/Help.svg";
+import Profile from "../assets/Profile.svg";
+import Setting from "../assets/Setting.svg";
 
 const NavItem = ({ imgSrc, label }) => (
   <div className="options2 d flex items-center justify-center font-semibold p-2 text-xs">
@@ -29,17 +33,17 @@ const Navbar = ({ onLogout }) => {
   ];
 
   return (
-    <div className="navbar pt-6 px-8 flex items-center h-20 justify-between w-full sticky">
+    <div className="navbar py-7 px-8 flex items-center justify-between w-full sticky">
       <div className="aiimg">
         <img src={grad} alt="image" className="aiimg2" />
       </div>
 
-      <div className="options d flex items-center justify-center flex-row">
+      <div className="options  flex items-center justify-center flex-row">
         {navItems.map((item, index) => (
           <NavLink
             key={index}
             to={item.path}
-            className="options2 d flex items-center justify-center font-semibold p-2 text-xs"
+            className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
           >
             <img src={item.imgSrc} alt={item.label} className="h-5 w-5 mr-2" />
             {item.label}
@@ -74,19 +78,31 @@ const Navbar = ({ onLogout }) => {
             className="absolute bg-white shadow-md rounded mt-2"
             style={{ right: "0", top: "100%", minWidth: "150px", zIndex: 10 }}
           >
-            <ul className="text-gray-700 text-sm p-3">
-              <li className="py-1 px-2 hover:bg-gray-200 cursor-pointer">
-                Profile
-              </li>
-              <li className="py-1 px-2 hover:bg-gray-200 cursor-pointer">
+            <ul className=" ">
+              <div className="flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200">
+                <img src={Profile} alt="profile" className="h-5 w-5 mr-1" />
+                <li className=" font-normal">
+                  Profile
+                </li>
+              </div>
+              <div className="flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200">
+                <img src={Setting} alt="profile" className="h-5 w-5 mr-1" />
+                <li className=" font-normal">
                 Settings
-              </li>
-              <li
-                className="py-1 px-2 hover:bg-gray-200 cursor-pointer"
-                onClick={onLogout}
-              >
-                Log Out
-              </li>
+                </li>
+              </div>
+              <div onClick={onLogout} className="flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200">
+                <img src={Help} alt="profile" className="h-5 w-5 mr-1" />
+                <li className=" font-normal">
+                Help % Support
+                </li>
+              </div>
+              <div onClick={onLogout} className="flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200">
+                <img src={LogOut} alt="profile" className="h-5 w-5 mr-1" />
+                <li className=" font-normal">
+                Logout
+                </li>
+              </div>
             </ul>
           </div>
         )}

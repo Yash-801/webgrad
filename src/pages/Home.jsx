@@ -18,7 +18,7 @@ const JobCard = ({ imgSrc, title, company, location }) => (
   </div>
 );
 
-const Home = ({ onLogout }) => {
+const Home = () => {
   const jobData = [
     {
       imgSrc: frontend,
