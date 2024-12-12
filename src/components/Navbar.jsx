@@ -33,7 +33,7 @@ const Navbar = ({ onLogout }) => {
   ];
 
   return (
-    <div className="navbar py-7 px-8 flex items-center justify-between w-full sticky">
+    <div className="navbar py-7 px-8 flex items-center justify-between w-full stickyfixed">
       <div className="aiimg">
         <img src={grad} alt="image" className="aiimg2" />
       </div>
@@ -81,27 +81,22 @@ const Navbar = ({ onLogout }) => {
             <ul className=" ">
               <div className="flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200">
                 <img src={Profile} alt="profile" className="h-5 w-5 mr-1" />
-                <li className=" font-normal">
-                  Profile
-                </li>
+                <li className=" font-normal">Profile</li>
               </div>
               <div className="flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200">
                 <img src={Setting} alt="profile" className="h-5 w-5 mr-1" />
-                <li className=" font-normal">
-                Settings
-                </li>
+                <li className=" font-normal">Settings</li>
               </div>
-              <div onClick={onLogout} className="flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200">
+              <div className="flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200">
                 <img src={Help} alt="profile" className="h-5 w-5 mr-1" />
-                <li className=" font-normal">
-                Help % Support
-                </li>
+                <li className=" font-normal">Help % Support</li>
               </div>
-              <div onClick={onLogout} className="flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200">
+              <div
+                onClick={onLogout}
+                className="flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200"
+              >
                 <img src={LogOut} alt="profile" className="h-5 w-5 mr-1" />
-                <li className=" font-normal">
-                Logout
-                </li>
+                <li className=" font-normal">Logout</li>
               </div>
             </ul>
           </div>

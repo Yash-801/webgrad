@@ -6,6 +6,8 @@ import Doller from "../assets/Doller.svg";
 import Location from "../assets/Location.svg";
 import Time from "../assets/Time.svg";
 import Bookmark from "../assets/Bookmark.svg";
+import FilterModal from "./FilterModal";
+import { useState } from "react";
 
 const jobData = [
   {
@@ -122,6 +124,11 @@ const jobData = [
 ];
 
 const JobList = () => {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  const toggleFilter = () => {
+    setIsFilterOpen(!isFilterOpen);
+  };
   return (
     <div className="mx-32">
       <div className="mt-7 mb-5">
@@ -136,11 +143,7 @@ const JobList = () => {
       </div>
       <div className="flex flex-row w-full mb-4">
         <div className="w-1/2 flex-auto ">
-          <input
-            type="text"
-            placeholder="What position are you looking for ?"
-            className="border border-gray-300 h-10 text-xs p-2 w-full"
-          />
+          <input className="border border-gray-300 h-10 text-xs p-2 w-full" />
         </div>
         <div className="w-1/6 ml-4 ">
           <input
@@ -166,7 +169,10 @@ const JobList = () => {
         <div className="w-3/4 flex-auto">
           <div className="mb-2 flex justify-between items-center">
             <p className="text-3xl font-medium">10 Jobs</p>
-            <button className="flex items-center space-x-6 border rounded-lg border-[#d5d5d5] px-4 py-1">
+            <button
+              onClick={toggleFilter}
+              className="flex items-center space-x-6 border rounded-lg border-[#d5d5d5] px-4 py-1"
+            >
               <div className="flex items-center ">
                 <img src={Filter} alt="filter" className="h-5 w-5" />
                 <span className="ml-1 text-sm">Filter</span>
@@ -175,6 +181,7 @@ const JobList = () => {
                 <img src={downarrow} alt="downarrow" className="h-5 w-5" />
               </div>
             </button>
+            <FilterModal isOpen={isFilterOpen} onClose={toggleFilter} />
           </div>
           {jobData.map((job) => (
             <div

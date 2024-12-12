@@ -7,8 +7,8 @@ import Car from "../assets/Car.jpeg";
 import TwoTen from "../assets/TwoTen.png";
 import { useState, useEffect } from "react";
 import Car2 from "../assets/Car2.jpeg";
-import EmployerDash from "../assets/EmployerDash.png"
-import Aeroplan from "../assets/Aeroplan.jpg"
+import EmployerDash from "../assets/EmployerDash.png";
+import Aeroplan from "../assets/Aeroplan.jpg";
 
 const jobData = [
   {
@@ -122,8 +122,7 @@ const jobData = [
     location: "Ashkāsham",
     salary: "rocaj22328@chainds.com",
     Image: EmployerDash,
-    description:
-      "Education and Health services, Financial Activities",
+    description: "Education and Health services, Financial Activities",
   },
   {
     id: 16,
@@ -242,37 +241,32 @@ const jobData = [
 ];
 
 const Companies = () => {
-  const pageSize = 10; // Number of companies per page
+  const pageSize = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Calculate the indices for the companies to be displayed on the current page
   const startIndex = (currentPage - 1) * pageSize;
   const currentCompanies = jobData.slice(startIndex, startIndex + pageSize);
 
-  // Handle the Next page with scroll to top
   const nextPage = () => {
     if (currentPage * pageSize < jobData.length) {
       setCurrentPage(currentPage + 1);
-      scrollToTop(); // Scroll to top after changing the page
+      scrollToTop();
     }
   };
 
-  // Handle the Previous page with scroll to top
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
-      scrollToTop(); // Scroll to top after changing the page
+      scrollToTop();
     }
   };
 
-  // Scroll to the top of the page
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // Smooth scroll animation
+      behavior: "smooth",
     });
   };
-
 
   return (
     <div className="mx-32">
@@ -291,15 +285,6 @@ const Companies = () => {
         <div className="w-3/4 flex-auto">
           <div className="mb-2 flex justify-between items-center">
             <p className="text-3xl font-medium">30</p>
-            <button className="flex items-center space-x-6 border rounded-lg border-[#d5d5d5] px-4 py-1">
-              <div className="flex items-center ">
-                <img src={Filter} alt="filter" className="h-5 w-5" />
-                <span className="ml-1 text-sm">Filter</span>
-              </div>
-              <div>
-                <img src={downarrow} alt="downarrow" className="h-5 w-5" />
-              </div>
-            </button>
           </div>
           {currentCompanies.map((job) => (
             <div
@@ -343,7 +328,6 @@ const Companies = () => {
                 Previous
               </button>
 
-              {/* Page Numbers */}
               <span className="text-xl">
                 Page {currentPage} of {Math.ceil(jobData.length / pageSize)}
               </span>

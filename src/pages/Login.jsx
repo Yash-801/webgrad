@@ -1,15 +1,20 @@
+// --- pages/Login.jsx ---
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { login } from "../redux/authSlice";
 import grad from "../assets/grad.png";
 import lock from "../assets/lock.png";
 import google from "../assets/google.png";
 import facebook from "../assets/facebook.png";
-import { useState } from "react";
-import axios from "axios";
 
-const Login = ({ setIsLoggedIn }) => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -26,7 +31,7 @@ const Login = ({ setIsLoggedIn }) => {
       if (response.data.token) {
         localStorage.setItem("authToken", response.data.token);
         localStorage.setItem("userData", JSON.stringify(response.data.data));
-        setIsLoggedIn(true);
+        dispatch(login());
       }
     } catch (error) {
       console.error("Error during login:", error);
@@ -37,6 +42,7 @@ const Login = ({ setIsLoggedIn }) => {
   const handleMouseDown = () => {
     setShowPassword(true);
   };
+
   const handleMouseUp = () => {
     setShowPassword(false);
   };
@@ -56,7 +62,7 @@ const Login = ({ setIsLoggedIn }) => {
               <div className="emailiput">
                 <img
                   src={lock}
-                  alt="image"
+                  alt="email"
                   className="emaillogo h-5 w-5 mx-2"
                 />
                 <input
@@ -103,6 +109,11 @@ const Login = ({ setIsLoggedIn }) => {
                   👁️
                 </button>
               </div>
+              {errorMessage && (
+                <p style={{ color: "red", textAlign: "center" }}>
+                  {errorMessage}
+                </p>
+              )}
               <input
                 type="submit"
                 name="login"
