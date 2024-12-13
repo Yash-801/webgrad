@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { login, logout } from "./redux/authSlice";
+import { login, logout } from "./Context/authSlice";
 import AppRoutes from "./routes/AppRoutes";
 import { useEffect } from "react";
 

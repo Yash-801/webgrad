@@ -3,6 +3,57 @@ import React from "react";
 const FilterModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
+  const filterOptions = [
+    {
+      title: "Date of Posting",
+      options: ["All time", "Last 24 hours", "Last 3 days", "Last 7 days"],
+    },
+    {
+      title: "Role Target",
+      options: ["Graduate Jobs", "Internship", "Placement & Work Experience"],
+    },
+    {
+      title: "Remote or In-Person",
+      options: ["Remote", "In-Person", "Flexible"],
+    },
+    {
+      title: "Salary",
+      options: ["Any", "30000k", "50000k", "80000k", "100000k"],
+      isButtonGroup: true,
+    },
+    {
+      title: "Years of Experience",
+      options: [
+        "No Experience",
+        "1 - 2 Years Experience",
+        "4 - 6 Years Experience",
+        "6+ Years Experience",
+      ],
+    },
+    {
+      title: "Type of Employment",
+      options: ["Full-time", "Part-time"],
+    },
+  ];
+
+  const industries = [
+    { id: 1, name: "Education and Health services" },
+    { id: 2, name: "Construction" },
+    { id: 3, name: "Financial Activities" },
+    { id: 4, name: "Computers and Information Technology" },
+    { id: 5, name: "Mechanical and Electrical Engineering" },
+    { id: 6, name: "Leisure and Hospitality" },
+  ];
+
+  const SecondIndustries = [
+    { id: 7, name: "Logistics and Transportation" },
+    { id: 8, name: "Natural Resources and Mining" },
+    { id: 9, name: "Professional and business services" },
+    { id: 10, name: "Trade, Transportation, and Utilities" },
+    { id: 11, name: "Telecommunications" },
+    { id: 12, name: "Financial Services" },
+  ];
+
   return (
     <div className="fixed inset-0 z-20 flex justify-center items-center">
       {/* Blur Background */}
@@ -12,159 +63,65 @@ const FilterModal = ({ isOpen, onClose }) => {
       ></div>
 
       {/* Modal Content */}
-      <div className="bg-white p-6  rounded-lg shadow-lg relative z-30">
+      <div className="bg-white p-6 rounded-lg shadow-lg relative z-30">
+        {/* Header */}
         <div className="flex justify-between items-center my-4">
           <h2 className="text-xl font-medium">Filters</h2>
-          <button className=" text-gray-600 hover:text-black" onClick={onClose}>
+          <button className="text-gray-600 hover:text-black" onClick={onClose}>
             ✖
           </button>
         </div>
 
         {/* Filter Options */}
         <div className="grid grid-cols-3 gap-y-12 gap-x-12">
-          <div className="flex flex-col">
-            <p className="font-semibold my-4">Date of posting</p>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                All time
-              </label>
+          {filterOptions.map((filter, index) => (
+            <div key={index} className="flex flex-col">
+              <p className="font-semibold my-4">{filter.title}</p>
+              {filter.isButtonGroup ? (
+                <div className="mb-4 flex">
+                  <button className="text-xs py-2 px-3 text-[#353538] border border-[#353538] border-r-0">
+                    Monthly
+                  </button>
+                  <button className="text-xs py-2 px-3 text-[#353538] border border-[#353538]">
+                    Yearly
+                  </button>
+                </div>
+              ) : null}
+              {filter.options.map((option, idx) => (
+                <div className="gap-x-2 flex" key={idx}>
+                  <input
+                    type="radio"
+                    name={filter.title}
+                    value={option}
+                    id={option}
+                  />
+                  <label className="text-[#71717a] text-sm" htmlFor={option}>
+                    {option}
+                  </label>
+                </div>
+              ))}
             </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                Last 24 hours
-              </label>
-            </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                Last 3 days
-              </label>
-            </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                Last 7 days
-              </label>
-            </div>
+          ))}
+        </div>
+        <div>
+          <p className="font-semibold my-4 mt-14">Industries</p>
+        </div>
+        <div className="grid grid-cols-2 my-4 gap-x-12">
+          <div>
+            {industries.map((id) => (
+              <div className="flex items-center mb-3">
+                <input type="checkbox" name="{id.name}" value={id.name} />
+                <label className="text-sm text-gray-500 ml-2">{id.name}</label>
+              </div>
+            ))}
           </div>
           <div>
-            <p className="font-semibold my-4">Salary</p>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                Any
-              </label>
-            </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                30000k
-              </label>
-            </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                50000k
-              </label>
-            </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                80000k
-              </label>
-            </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                100000k
-              </label>
-            </div>
-          </div>
-          <div className="flex flex-col">
-            <p className="font-semibold my-4">Role Target</p>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                Graduate Jobs
-              </label>
-            </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                Internship
-              </label>
-            </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                Placement & Work Experience
-              </label>
-            </div>
-          </div>
-          <div>
-            <p className="font-semibold my-4">Years of Experience</p>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                No Experience
-              </label>
-            </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                1 - 2 Years Experience
-              </label>
-            </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                4 - 6 Years Experience
-              </label>
-            </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                6+ Years Experience
-              </label>
-            </div>
-          </div>
-          <div className="flex flex-col">
-            <p className="font-semibold my-4">Remote or In-Person</p>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                Remote
-              </label>
-            </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                In-Person
-              </label>
-            </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                Flexible
-              </label>
-            </div>
-          </div>
-          <div>
-            <p className="font-semibold my-4">Type of employment</p>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                Full-time
-              </label>
-            </div>
-            <div className="gap-x-2 flex">
-              <input type="radio" name="date" value="today" id="All time" />
-              <label className="text-[#71717a] text-sm" for="All time">
-                Part-time
-              </label>
-            </div>
+            {SecondIndustries.map((id) => (
+              <div className="flex items-center mb-3">
+                <input type="checkbox" name="{id.name}" value={id.name} />
+                <label className="text-sm text-gray-500 ml-2">{id.name}</label>
+              </div>
+            ))}
           </div>
         </div>
       </div>

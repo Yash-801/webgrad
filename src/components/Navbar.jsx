@@ -33,7 +33,7 @@ const Navbar = ({ onLogout }) => {
   ];
 
   return (
-    <div className="navbar py-7 px-8 flex items-center justify-between w-full stickyfixed">
+    <div className="container fluid navbar py-7 px-8 flex items-center justify-between w-full stickyfixed">
       <div className="aiimg">
         <img src={grad} alt="image" className="aiimg2" />
       </div>

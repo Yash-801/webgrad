@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import useLastPageTracker from "../hooks/useLastPageTracker";
+import useLastPageTracker from "../Hooks/useLastPageTracker";
 import Navbar from "../components/Navbar";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
