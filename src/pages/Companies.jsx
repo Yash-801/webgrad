@@ -1,11 +1,9 @@
 import React from "react";
-import Filter from "../assets/Filter.svg";
-import downarrow from "../assets/downarrow.svg";
 import Location from "../assets/Location.svg";
 import Defult from "../assets/Defult.png";
 import Car from "../assets/Car.jpeg";
 import TwoTen from "../assets/TwoTen.png";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Car2 from "../assets/Car2.jpeg";
 import EmployerDash from "../assets/EmployerDash.png";
 import Aeroplan from "../assets/Aeroplan.jpg";

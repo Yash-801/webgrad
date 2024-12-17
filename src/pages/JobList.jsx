@@ -143,7 +143,11 @@ const JobList = () => {
       </div>
       <div className="flex flex-row w-full mb-4">
         <div className="w-1/2 flex-auto ">
-          <input className="border border-gray-300 h-10 text-xs p-2 w-full" />
+          <input
+            type="text"
+            placeholder="What job are you looking for?"
+            className="border border-gray-300 h-10 text-xs p-2 w-full"
+          />
         </div>
         <div className="w-1/6 ml-4 ">
           <input

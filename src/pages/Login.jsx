@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import { login } from "../Context/authSlice";
+import { login } from "../Store/authSlice";
 import grad from "../assets/grad.png";
 import lock from "../assets/lock.png";
 import google from "../assets/google.png";

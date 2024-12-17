@@ -13,7 +13,7 @@ import Help from "../assets/Help.svg";
 import Profile from "../assets/Profile.svg";
 import Setting from "../assets/Setting.svg";
 
-const NavItem = ({ imgSrc, label }) => (
+export const NavItem = ({ imgSrc, label }) => (
   <div className="options2 d flex items-center justify-center font-semibold p-2 text-xs">
     <img src={imgSrc} alt={label} className="h-5 w-5 mr-2" />
     {label}
@@ -24,7 +24,7 @@ const Navbar = ({ onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => setIsOpen(!isOpen);
 
-  const navItems = [
+  const NavItems = [
     { imgSrc: home, label: "Home", path: "/" },
     { imgSrc: job, label: " JobList", path: "/JobList" },
     { imgSrc: job, label: "Companies", path: "/companies" },
@@ -33,13 +33,13 @@ const Navbar = ({ onLogout }) => {
   ];
 
   return (
-    <div className="container fluid navbar py-7 px-8 flex items-center justify-between w-full stickyfixed">
+    <div className="navbar py-7 px-8 flex items-center justify-between w-full bg-white">
       <div className="aiimg">
         <img src={grad} alt="image" className="aiimg2" />
       </div>
 
       <div className="options  flex items-center justify-center flex-row">
-        {navItems.map((item, index) => (
+        {NavItems.map((item, index) => (
           <NavLink
             key={index}
             to={item.path}
