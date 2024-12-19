@@ -84,12 +84,12 @@
   font-weight: 600;
 }
 
-.jobcontanir {
+/* .jobcontanir {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   margin: 20px;
-}
+} */
 
 .jobcards {
   border: 1px solid #e8e8e8;

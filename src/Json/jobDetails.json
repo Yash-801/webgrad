@@ -1,0 +1,17 @@
+
+  {
+    "header": {
+      "title": "WT - All candidates - Quick Apply",
+      "company": "at GradSearch",
+      "locationTags": ["Dubai", "Remote", "Part Time", "1-3 years experience"]
+    },
+    "jobDescription": "Please quick apply",
+    "skills": ["Python", "Java", "Project Management"],
+    "applicationExpiryDate": "2025-01-23",
+    "compensation": {
+      "type": "Monthly",
+      "range": "$20,000 - $40,000"
+    },
+    "requirements": ["MSc Business Studies"],
+    "aboutCompany": "We provide a method to connect candidates and employers."
+  }

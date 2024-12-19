@@ -7,6 +7,7 @@ import JobList from "../pages/JobList";
 import Companies from "../pages/Companies";
 import MyJob from "../pages/MyJob";
 import Messages from "../pages/Messages";
+import CompanisDetails from "../pages/CompnisDetails";
 
 const AppRoutes = ({ isLoggedIn, handleLogout }) => {
   useLastPageTracker();
@@ -21,6 +22,7 @@ const AppRoutes = ({ isLoggedIn, handleLogout }) => {
         <Route path="/MyJob" element={<MyJob />} />
         <Route path="/Messages" element={<Messages />} />
         <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/company-detail/:id" element={<CompanisDetails />} />
       </Routes>
     </>
   ) : (

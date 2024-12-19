@@ -25,9 +25,9 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      {/* <AppRoutes isLoggedIn={isLoggedIn} handleLogout={handleLogout} /> */}
-      <Navbar />
-      <CompnisDetails />
+      <AppRoutes isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+      {/* <Navbar />
+      <CompnisDetails /> */}
     </BrowserRouter>
   );
 };

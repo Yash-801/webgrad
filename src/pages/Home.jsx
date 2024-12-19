@@ -3,20 +3,8 @@ import AiCover2 from "../assets/AiCover2.png";
 import frontend from "../assets/frontend.png";
 import car from "../assets/car.jpeg";
 import compny from "../assets/compny.jpg";
-const JobCard = ({ imgSrc, title, company, location }) => (
-  <div className="jobcards p-4">
-    <div className="flex justify-between items-center">
-      <img src={imgSrc} alt={title} className="h-12 w-12" />
-      <p className="fulltimetxt text-base">Full Time</p>
-    </div>
-    <div className="mt-3">
-      <p className="cardinfo1">{title}</p>
-      <p className="cardinfo2">at {company}</p>
-      <p className="cardinfo3">{location}</p>
-    </div>
-    <button className="cardinfobtn">More Details</button>
-  </div>
-);
+import Dp from "../assets/Dp.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const jobData = [
@@ -25,61 +13,86 @@ const Home = () => {
       title: "Website WordPress",
       company: "Employer 2810",
       location: "test2, test 2",
+      id: 1,
     },
     {
       imgSrc: frontend,
       title: "Frontend Developer",
       company: "Polaris Software Solution",
       location: "test",
+      id: 2,
     },
     {
       imgSrc: frontend,
       title: "Android Developer",
       company: "Polaris Software Solution",
       location: "test2",
+      id: 3,
     },
     {
       imgSrc: car,
       title: "QA Tester",
       company: "2910 Company",
       location: "test2",
+      id: 4,
     },
     {
       imgSrc: compny,
       title: "WT - All candidates",
       company: "GradSearch",
       location: "Pls quick apply",
+      id: 5,
     },
     {
       imgSrc: compny,
       title: "Shortlist Test",
       company: "Aftrn Company",
       location: "job des",
+      id: 6,
     },
     {
       imgSrc: compny,
       title: "Aftyn - All Vis",
       company: "Aftrn Company",
       location: "a",
+      id: 7,
     },
     {
       imgSrc: compny,
       title: "Aftn - Close Job",
       company: "Aftrn Company",
       location: "job descript",
+      id: 8,
     },
   ];
-
+  const navigate = useNavigate();
+  const JobCard = ({ imgSrc, title, company, location, id }) => (
+    <div
+      className="jobcards p-4"
+      onClick={() => navigate(`/company-detail/${id}`)}
+    >
+      <div className="flex justify-between items-center">
+        <img src={imgSrc} alt={title} className="h-12 w-12" />
+        <p className="fulltimetxt text-base">Full Time</p>
+      </div>
+      <div className="mt-3">
+        <p className="cardinfo1">{title}</p>
+        <p className="cardinfo2">at {company}</p>
+        <p className="cardinfo3">{location}</p>
+      </div>
+      <button className="cardinfobtn">More Details</button>
+    </div>
+  );
   return (
     <>
       <div className="dashboard">
         <div className="dashcontaintant flex flex-col">
           <div className="mt-4">
             <h1 className="font-medium text-3xl">Welcome Home Zadafiya Yash</h1>
-            <img src={AiCover2} alt="AiCover2" className="h-72 w-full mt-9" />
+            <img src={AiCover2} alt="AiCover2" className="h-auto w-full mt-9" />
             <div className="flex my-7">
               <img
-                src={AiCover2}
+                src={Dp}
                 alt="logo"
                 className="profileimg2 h-24 w-24 object-cover"
               />
@@ -125,7 +138,7 @@ const Home = () => {
             <p className="mb-4">
               Here are some jobs that are a close match with your profile
             </p>
-            <div className="jobcontanir grid grid-cols-1 gap-4">
+            <div className="jobcontanir grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {jobData.map((job, index) => (
                 <JobCard
                   key={index}
@@ -133,6 +146,7 @@ const Home = () => {
                   title={job.title}
                   company={job.company}
                   location={job.location}
+                  id={job.id}
                 />
               ))}
             </div>
