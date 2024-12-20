@@ -71,7 +71,7 @@ const Home = () => {
       className="jobcards p-4"
       onClick={() => navigate(`/company-detail/${id}`)}
     >
-      <div className="flex justify-between items-center">
+      <div className="flex items-center justify-between">
         <img src={imgSrc} alt={title} className="h-12 w-12" />
         <p className="fulltimetxt text-base">Full Time</p>
       </div>
@@ -88,16 +88,16 @@ const Home = () => {
       <div className="dashboard">
         <div className="dashcontaintant flex flex-col">
           <div className="mt-4">
-            <h1 className="font-medium text-3xl">Welcome Home Zadafiya Yash</h1>
-            <img src={AiCover2} alt="AiCover2" className="h-auto w-full mt-9" />
-            <div className="flex my-7">
+            <h1 className="text-3xl font-medium">Welcome Home Zadafiya Yash</h1>
+            <img src={AiCover2} alt="AiCover2" className="mt-9 h-auto w-full" />
+            <div className="my-7 flex flex-col sm:flex-row">
               <img
                 src={Dp}
                 alt="logo"
                 className="profileimg2 h-24 w-24 object-cover"
               />
-              <div className="flex justify-evenly flex-col ml-4">
-                <p className="profileinfop1 font-medium text-2xl">
+              <div className="ml-0 mt-4 flex flex-col justify-evenly sm:ml-4 sm:mt-0">
+                <p className="profileinfop1 text-2xl font-medium">
                   Zadafiya Yash
                 </p>
                 <p className="p2 text-sm">student</p>
@@ -108,37 +108,37 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-zinc-50 flex justify-center">
-        <div className="desh2">
-          <div className="bg-white flex justify-between mt-3 items-center p-5">
-            <div>
+      <div className="flex justify-center bg-zinc-50">
+        <div className="desh2 w-full max-w-7xl">
+          <div className="mt-3 flex flex-col items-center justify-between bg-white p-5 sm:flex-row">
+            <div className="text-center sm:text-left">
               <p className="text-3xl font-medium">Profile Complete 70%</p>
-              <p className="dash2 pt-2 mt-5 text-sm">
+              <p className="dash2 mt-5 pt-2 text-sm">
                 Your profile is incomplete. Complete your missing items to
                 improve your chances of securing a dream role.
               </p>
             </div>
-            <button className="dash2btn">My Profile</button>
+            <button className="dash2btn mt-4 sm:mt-0">My Profile</button>
           </div>
 
-          <div className="bg-white mt-3 p-5">
+          <div className="mt-3 bg-white p-5">
             <p className="text-3xl font-medium">Job Application Status</p>
-            <p className="dash2 pt-2 text-sm mt-5">
+            <p className="dash2 mt-5 pt-2 text-sm">
               Here's some recent jobs applied by you
             </p>
-            <div className="flex justify-center items-center mt-10 mb-8">
-              <span className="text-zinc-500 text-lg font-medium">
+            <div className="mb-8 mt-10 flex items-center justify-center">
+              <span className="text-lg font-medium text-zinc-500">
                 No Data Available
               </span>
             </div>
           </div>
 
-          <div className="bg-white mt-3 flex justify-center flex-col p-5">
-            <p className="font-medium text-3xl mb-4">Recommended Jobs</p>
+          <div className="mt-3 flex flex-col justify-center bg-white p-5">
+            <p className="mb-4 text-3xl font-medium">Recommended Jobs</p>
             <p className="mb-4">
               Here are some jobs that are a close match with your profile
             </p>
-            <div className="jobcontanir grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="jobcontanir grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {jobData.map((job, index) => (
                 <JobCard
                   key={index}

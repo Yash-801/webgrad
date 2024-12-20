@@ -54,7 +54,6 @@ const jobData = [
     logo: "https://via.placeholder.com/50",
     description: "test",
   },
-
   {
     id: 5,
     title: "Backend Developer",
@@ -129,55 +128,52 @@ const JobList = () => {
   const toggleFilter = () => {
     setIsFilterOpen(!isFilterOpen);
   };
+
   return (
-    <div className="mx-32">
-      <div className="mt-7 mb-5">
-        <p className="text-4xl font-medium mb-4">
+    <div className="mx-4 sm:mx-8 lg:mx-32">
+      <div className="mb-5 mt-7">
+        <p className="mb-4 text-2xl font-medium sm:text-3xl lg:text-4xl">
           Find your
           <span className="text-[#5F97C5]"> new job </span>
           today
         </p>
-        <p className="text-[#676970]">
+        <p className="text-sm text-[#676970] sm:text-base">
           Browse through job listings targeted at interns and graduates.
         </p>
       </div>
-      <div className="flex flex-row w-full mb-4">
-        <div className="w-1/2 flex-auto ">
+      <div className="mb-4 flex w-full flex-col lg:flex-row">
+        <div className="mb-4 flex-auto lg:mb-0 lg:w-1/2">
           <input
             type="text"
             placeholder="What job are you looking for?"
-            className="border border-gray-300 h-10 text-xs p-2 w-full"
+            className="h-10 w-full border border-gray-300 p-2 text-xs"
           />
         </div>
-        <div className="w-1/6 ml-4 ">
+        <div className="flex w-full flex-col gap-4 sm:flex-row lg:w-auto">
           <input
             type="text"
             placeholder="Skill"
-            className="border border-gray-300 h-10 text-xs p-2 w-full "
+            className="h-10 w-full border border-gray-300 p-2 text-xs sm:w-auto"
           />
-        </div>
-        <div className="w-1/6 ml-4">
           <input
             type="text"
             placeholder="Location"
-            className="border border-gray-300 h-10 text-xs p-2 w-full"
+            className="h-10 w-full border border-gray-300 p-2 text-xs sm:w-auto"
           />
-        </div>
-        <div className="w-1/6 flex items-center justify-start ml-4">
-          <button className="text-sm bg-[#004473] py-2.5 px-5 text-white">
+          <button className="h-max w-max bg-[#004473] px-5 py-2.5 text-sm text-white">
             Search Job
           </button>
         </div>
       </div>
-      <div className="p-6 bg-[#FAFAFA] flex flex-row">
-        <div className="w-3/4 flex-auto">
-          <div className="mb-2 flex justify-between items-center">
-            <p className="text-3xl font-medium">10 Jobs</p>
+      <div className="flex flex-col gap-5 bg-[#FAFAFA] p-6 lg:flex-row">
+        <div className="flex-auto lg:w-3/4">
+          <div className="mb-2 flex items-center justify-between">
+            <p className="text-2xl font-medium sm:text-3xl">10 Jobs</p>
             <button
               onClick={toggleFilter}
-              className="flex items-center space-x-6 border rounded-lg border-[#d5d5d5] px-4 py-1"
+              className="flex items-center space-x-2 rounded-lg border border-[#d5d5d5] px-4 py-1 sm:space-x-6"
             >
-              <div className="flex items-center ">
+              <div className="flex items-center">
                 <img src={Filter} alt="filter" className="h-5 w-5" />
                 <span className="ml-1 text-sm">Filter</span>
               </div>
@@ -190,45 +186,43 @@ const JobList = () => {
           {jobData.map((job) => (
             <div
               key={job.id}
-              className="border p-4 rounded-lg shadow-md flex items-start space-x-4 mb-4 bg-white cursor-pointer"
+              className="mb-4 flex cursor-pointer flex-col items-start space-y-4 rounded-lg border bg-white p-4 shadow-md sm:flex-row sm:items-center sm:space-x-4 sm:space-y-0"
             >
               <img
                 src={Bussins}
                 alt={`${job.title} logo`}
-                className="w-16 h-16 object-cover rounded-full"
+                className="h-16 w-16 rounded-full object-cover"
               />
               <div className="flex-1">
-                <h2 className="text-xl font-medium">{job.title}</h2>
+                <h2 className="text-lg font-medium sm:text-xl">{job.title}</h2>
                 <p className="text-sm text-[#333338]">{job.company}</p>
-                <div className="flex items-center space-x-3 text-gray-500 text-sm my-3">
-                  <span className="flex items-center bg-[#F1F1F1] py-1 px-2 rounded-md">
+                <div className="my-3 flex flex-wrap items-center gap-2 text-sm text-gray-500">
+                  <span className="flex items-center rounded-md bg-[#F1F1F1] px-2 py-1">
                     <img
                       src={Location}
                       alt="Location"
-                      className="h-4 w-4 pr-1 "
+                      className="h-4 w-4 pr-1"
                     />
                     {job.location}
                   </span>
-                  <span className="flex items-center bg-[#F1F1F1] py-1 px-2 rounded-md">
+                  <span className="flex items-center rounded-md bg-[#F1F1F1] px-2 py-1">
                     <img src={Time} alt="Time" className="h-4 w-4" />
                     {job.type}
                   </span>
-                  <span className="flex items-center bg-[#F1F1F1] py-1 px-2 rounded-md">
-                    <img src={Doller} alt="Doller" className="h-4 w-4 mr-1" />
+                  <span className="flex items-center rounded-md bg-[#F1F1F1] px-2 py-1">
+                    <img src={Doller} alt="Doller" className="mr-1 h-4 w-4" />
                     {job.salary}
                   </span>
-                  <span className="flex items-center bg-[#F1F1F1] py-1 px-2 rounded-md">
+                  <span className="flex items-center rounded-md bg-[#F1F1F1] px-2 py-1">
                     <img
                       src={Calender}
                       alt="Calender"
-                      className="h-4 w-4 mr-1"
+                      className="mr-1 h-4 w-4"
                     />
                     {job.posted}
                   </span>
                 </div>
-                <p className=" text-sm mb-4 text-[#707079]">
-                  {job.description}
-                </p>
+                <p className="mb-4 text-sm text-[#707079]">{job.description}</p>
               </div>
               <button
                 aria-label="Bookmark this job"
@@ -239,36 +233,30 @@ const JobList = () => {
             </div>
           ))}
         </div>
-        <div className="w-1/4 ml-5">
-          <div className="p-4 bg-white mb-4">
+        <div className="flex flex-col gap-5 lg:w-1/4">
+          <div className="bg-white p-4">
             <div className="mb-4">
-              <p className="text-xl font-medium">Email me for jobs</p>
-            </div>
-            <div className="mb-4">
-              <p className="text-[#676970] text-xs">
-                Subscribe to our weekly newsletter with jobs applicable to you.
+              <p className="text-lg font-medium sm:text-xl">
+                Email me for jobs
               </p>
             </div>
-            <div className="w-full">
-              <button className="text-sm bg-[#004473] py-2 w-full hover:bg-[#5498F1]  text-white rounded-lg">
-                Subscribe
-              </button>
-            </div>
+            <p className="text-xs text-[#676970] sm:text-sm">
+              Subscribe to our weekly newsletter with jobs applicable to you.
+            </p>
+            <button className="mt-4 w-full rounded-lg bg-[#004473] py-2 text-sm text-white hover:bg-[#5498F1]">
+              Subscribe
+            </button>
           </div>
-          <div className="p-4 bg-white">
+          <div className="bg-white p-4">
             <div className="mb-4">
-              <p className="text-xl font-medium">Invite Friends</p>
+              <p className="text-lg font-medium sm:text-xl">Invite Friends</p>
             </div>
-            <div className="mb-4">
-              <p className="text-[#676970] text-xs">
-                Invite your friends to GradSearch to help them get hired{" "}
-              </p>
-            </div>
-            <div className="w-full">
-              <button className="text-sm bg-[#004473] py-2 w-full hover:bg-[#5498F1]  text-white rounded-lg">
-                Invite
-              </button>
-            </div>
+            <p className="text-xs text-[#676970] sm:text-sm">
+              Invite your friends to GradSearch to help them get hired
+            </p>
+            <button className="mt-4 w-full rounded-lg bg-[#004473] py-2 text-sm text-white hover:bg-[#5498F1]">
+              Invite
+            </button>
           </div>
         </div>
       </div>

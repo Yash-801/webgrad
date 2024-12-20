@@ -55,7 +55,7 @@ const FilterModal = ({ isOpen, onClose }) => {
   ];
 
   return (
-    <div className="fixed inset-0 z-20 flex justify-center items-center overflow-auto h-full ">
+    <div className="fixed inset-0 z-20 flex h-full items-center justify-center overflow-auto">
       {/* Blur Background */}
       <div
         className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm"
@@ -63,9 +63,9 @@ const FilterModal = ({ isOpen, onClose }) => {
       ></div>
 
       {/* Modal Content */}
-      <div className="bg-white rounded-lg shadow-lg z-30 mb-5 mt-20 relative transform-none">
+      <div className="relative z-30 mb-5 mt-20 transform-none rounded-lg bg-white shadow-lg">
         {/* Header */}
-        <div className="flex justify-between items-center p-6 border-b">
+        <div className="flex items-center justify-between border-b p-6">
           <h2 className="text-base font-semibold">Filters</h2>
           <button className="text-gray-600 hover:text-black" onClick={onClose}>
             ✖
@@ -73,29 +73,29 @@ const FilterModal = ({ isOpen, onClose }) => {
         </div>
 
         {/* Filter Options */}
-        <div className="grid grid-cols-3 gap-y-12 gap-x-12 p-6">
+        <div className="grid grid-cols-3 gap-x-12 gap-y-12 p-6">
           {filterOptions.map((filter, index) => (
             <div key={index} className="flex flex-col">
-              <p className="font-semibold my-4">{filter.title}</p>
+              <p className="my-4 font-semibold">{filter.title}</p>
               {filter.isButtonGroup ? (
                 <div className="mb-4 flex">
-                  <button className="text-xs py-2 px-3 text-[#353538] border border-[#353538] border-r-0">
+                  <button className="border border-r-0 border-[#353538] px-3 py-2 text-xs text-[#353538]">
                     Monthly
                   </button>
-                  <button className="text-xs py-2 px-3 text-[#353538] border border-[#353538]">
+                  <button className="border border-[#353538] px-3 py-2 text-xs text-[#353538]">
                     Yearly
                   </button>
                 </div>
               ) : null}
               {filter.options.map((option, idx) => (
-                <div className="gap-x-2 flex" key={idx}>
+                <div className="flex gap-x-2" key={idx}>
                   <input
                     type="radio"
                     name={filter.title}
                     value={option}
                     id={option}
                   />
-                  <label className="text-[#71717a] text-sm" htmlFor={option}>
+                  <label className="text-sm text-[#71717a]" htmlFor={option}>
                     {option}
                   </label>
                 </div>
@@ -104,34 +104,34 @@ const FilterModal = ({ isOpen, onClose }) => {
           ))}
         </div>
         <div>
-          <p className="font-semibold pt-5 pl-6">Industries</p>
+          <p className="pl-6 pt-5 font-semibold">Industries</p>
         </div>
-        <div className="grid grid-cols-2 p-5 gap-x-12">
+        <div className="grid grid-cols-2 gap-x-12 p-5">
           <div>
             {industries.map((id) => (
-              <div className="flex items-center mb-3">
+              <div className="mb-3 flex items-center">
                 <input type="checkbox" name="{id.name}" value={id.name} />
-                <label className="text-sm text-gray-500 ml-2">{id.name}</label>
+                <label className="ml-2 text-sm text-gray-500">{id.name}</label>
               </div>
             ))}
           </div>
           <div>
             {SecondIndustries.map((id) => (
-              <div className="flex items-center mb-3">
+              <div className="mb-3 flex items-center">
                 <input type="checkbox" name="{id.name}" value={id.name} />
-                <label className="text-sm text-gray-500 ml-2">{id.name}</label>
+                <label className="ml-2 text-sm text-gray-500">{id.name}</label>
               </div>
             ))}
           </div>
         </div>
-        <div className="flex justify-end p-6 border-t gap-4">
+        <div className="flex justify-end gap-4 border-t p-6">
           <div>
-            <button className="text-sm py-2 px-5 bg-[#f9f9f9] rounded-lg hover:border border-[#004473]">
+            <button className="rounded-lg border-[#004473] bg-[#f9f9f9] px-5 py-2 text-sm hover:border">
               Cancle
             </button>
           </div>
           <div>
-            <button className="text-sm py-2 px-5 bg-[#004473] rounded-lg text-white">
+            <button className="rounded-lg bg-[#004473] px-5 py-2 text-sm text-white">
               Apply Filters
             </button>
           </div>

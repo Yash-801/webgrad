@@ -62,7 +62,7 @@ const Login = () => {
                 <img
                   src={lock}
                   alt="email"
-                  className="emaillogo h-5 w-5 mx-2"
+                  className="emaillogo mx-2 h-5 w-5"
                 />
                 <input
                   type="email"
@@ -83,7 +83,7 @@ const Login = () => {
                 <img
                   src={lock}
                   alt="lock"
-                  className="emaillogo2 h-6 w-6 mx-2"
+                  className="emaillogo2 mx-2 h-6 w-6"
                 />
                 <input
                   type={showPassword ? "text" : "password"}

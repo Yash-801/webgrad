@@ -4,7 +4,7 @@
 }
 
 .aiimg2 {
-  height: 40px;
+  max-height: 40px;
   max-width: 250px;
   width: 100%;
   cursor: pointer;

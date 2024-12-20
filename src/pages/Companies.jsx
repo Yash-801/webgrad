@@ -268,8 +268,8 @@ const Companies = () => {
 
   return (
     <div className="mx-32">
-      <div className="mt-7 mb-5">
-        <p className="text-4xl font-medium mb-4">
+      <div className="mb-5 mt-7">
+        <p className="mb-4 text-4xl font-medium">
           Find your
           <span className="text-[#5F97C5]"> new job </span>
           today
@@ -279,49 +279,47 @@ const Companies = () => {
         </p>
       </div>
 
-      <div className="p-6 bg-[#FAFAFA] flex flex-row">
+      <div className="flex flex-row bg-[#FAFAFA] p-6">
         <div className="w-3/4 flex-auto">
-          <div className="mb-2 flex justify-between items-center">
+          <div className="mb-2 flex items-center justify-between">
             <p className="text-3xl font-medium">30</p>
           </div>
           {currentCompanies.map((job) => (
             <div
               key={job.id}
-              className="border p-4 rounded-lg shadow-md flex items-start space-x-4 mb-4 bg-white cursor-pointer"
+              className="mb-4 cursor-pointer items-start space-x-4 rounded-lg border bg-white p-4 shadow-md"
             >
               <img
                 src={job.Image}
                 alt={`${job.title} logo`}
-                className="w-16 h-16  rounded-full"
+                className="h-16 w-16 rounded-full"
               />
               <div className="flex-1">
                 <h2 className="text-xl font-medium">{job.title}</h2>
                 <p className="text-sm text-[#333338]">{job.company}</p>
-                <div className="flex items-center space-x-3 text-gray-500 text-sm my-3">
-                  <span className="flex items-center text-xs bg-[#F1F1F1] py-1 px-2 rounded-md">
+                <div className="my-3 flex items-center space-x-3 text-sm text-gray-500">
+                  <span className="flex items-center rounded-md bg-[#F1F1F1] px-2 py-1 text-xs">
                     <img
                       src={Location}
                       alt="Location"
-                      className="h-4 w-4 pr-1 "
+                      className="h-4 w-4 pr-1"
                     />
                     {job.location}
                   </span>
 
-                  <span className="flex items-center bg-[#F1F1F1] py-1 px-2 rounded-md text-xs">
+                  <span className="flex items-center rounded-md bg-[#F1F1F1] px-2 py-1 text-xs">
                     {job.salary}
                   </span>
                 </div>
-                <p className=" text-xs mb-4 text-[#707079]">
-                  {job.description}
-                </p>
+                <p className="mb-4 text-xs text-[#707079]">{job.description}</p>
               </div>
             </div>
           ))}
-          <div className="flex justify-center mt-6 items-center">
+          <div className="mt-6 flex items-center justify-center">
             <div className="flex items-center space-x-3">
               <button
                 onClick={prevPage}
-                className="px-4 py-2 bg-[#004473] text-white rounded-md"
+                className="rounded-md bg-[#004473] px-4 py-2 text-white"
               >
                 Previous
               </button>
@@ -332,40 +330,40 @@ const Companies = () => {
 
               <button
                 onClick={nextPage}
-                className="px-4 py-2 bg-[#004473] text-white rounded-md"
+                className="rounded-md bg-[#004473] px-4 py-2 text-white"
               >
                 Next
               </button>
             </div>
           </div>
         </div>
-        <div className="w-1/4 ml-5">
-          <div className="p-4 bg-white mb-4">
+        <div className="ml-5 w-1/4">
+          <div className="mb-4 bg-white p-4">
             <div className="mb-4">
               <p className="text-xl font-medium">Email me for jobs</p>
             </div>
             <div className="mb-4">
-              <p className="text-[#676970] text-xs">
+              <p className="text-xs text-[#676970]">
                 Subscribe to our weekly newsletter with jobs applicable to you.
               </p>
             </div>
             <div className="w-full">
-              <button className="text-sm bg-[#004473] py-2 w-full hover:bg-[#5498F1]  text-white rounded-lg">
+              <button className="w-full rounded-lg bg-[#004473] py-2 text-sm text-white hover:bg-[#5498F1]">
                 Subscribe
               </button>
             </div>
           </div>
-          <div className="p-4 bg-white">
+          <div className="bg-white p-4">
             <div className="mb-4">
               <p className="text-xl font-medium">Invite Friends</p>
             </div>
             <div className="mb-4">
-              <p className="text-[#676970] text-xs">
+              <p className="text-xs text-[#676970]">
                 Invite your friends to GradSearch to help them get hired{" "}
               </p>
             </div>
             <div className="w-full">
-              <button className="text-sm bg-[#004473] py-2 w-full hover:bg-[#5498F1]  text-white rounded-lg">
+              <button className="w-full rounded-lg bg-[#004473] py-2 text-sm text-white hover:bg-[#5498F1]">
                 Invite
               </button>
             </div>

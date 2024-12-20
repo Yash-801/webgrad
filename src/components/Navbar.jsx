@@ -12,47 +12,60 @@ import LogOut from "../assets/LogOut.svg";
 import Help from "../assets/Help.svg";
 import Profile from "../assets/Profile.svg";
 import Setting from "../assets/Setting.svg";
+import { FaBars } from "react-icons/fa";
 
 export const NavItem = ({ imgSrc, label }) => (
-  <div className="options2 d flex items-center justify-center font-semibold p-2 text-xs">
-    <img src={imgSrc} alt={label} className="h-5 w-5 mr-2" />
+  <div className="options2 d flex items-center justify-center p-2 text-xs font-semibold">
+    <img src={imgSrc} alt={label} className="mr-2 h-5 w-5" />
     {label}
   </div>
 );
 
 const Navbar = ({ onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   const toggleDropdown = () => setIsOpen(!isOpen);
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   const NavItems = [
     { imgSrc: home, label: "Home", path: "/" },
-    { imgSrc: job, label: " JobList", path: "/JobList" },
+    { imgSrc: job, label: "JobList", path: "/JobList" },
     { imgSrc: job, label: "Companies", path: "/companies" },
     { imgSrc: list, label: "MyJob", path: "/MyJob" },
-    { imgSrc: message, label: "message", path: "/Messages" },
+    { imgSrc: message, label: "Message", path: "/Messages" },
   ];
 
   return (
-    <div className="navbar py-7 px-8 flex items-center justify-between w-full bg-white">
-      <div className="aiimg">
+    <div className="navbar relative flex w-full items-center justify-between bg-white px-8 py-7">
+      {/* Logo Section */}
+      <div className="aiimg flex items-center">
+        <button
+          className="mr-4 text-xl focus:outline-none lg:hidden"
+          onClick={toggleSidebar}
+        >
+          <FaBars />
+        </button>
         <img src={grad} alt="image" className="aiimg2" />
       </div>
 
-      <div className="options  flex items-center justify-center flex-row">
+      {/* Desktop Nav Items */}
+      <div className="options hidden flex-row items-center justify-center lg:flex">
         {NavItems.map((item, index) => (
           <NavLink
             key={index}
             to={item.path}
             className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
           >
-            <img src={item.imgSrc} alt={item.label} className="h-5 w-5 mr-2" />
+            <img src={item.imgSrc} alt={item.label} className="mr-2 h-5 w-5" />
             {item.label}
           </NavLink>
         ))}
       </div>
 
+      {/* Notification and Profile Section */}
       <div className="d flex">
-        <div className="d flex mr-3">
+        <div className="d mr-3 flex">
           <img
             src={bell}
             alt="bell"
@@ -63,11 +76,11 @@ const Navbar = ({ onLogout }) => {
           onClick={toggleDropdown}
           className="toglmenu d flex items-center justify-between hover:cursor-pointer"
         >
-          <div className="h-9 w-9 overflow-auto d flex items-center mr-2">
-            <img src={logo} alt="logo" className="proimg h-7 w-7 ms-1" />
+          <div className="d mr-2 flex h-9 w-9 items-center overflow-auto">
+            <img src={logo} alt="logo" className="proimg mx-1 h-7 w-7" />
           </div>
           <div>
-            <p className="font-semibold text-xs">Zadafiya</p>
+            <p className="text-xs font-semibold">Zadafiya</p>
           </div>
           <div className="mx-1">
             <img src={downarrow} alt="downarrow" />
@@ -75,33 +88,66 @@ const Navbar = ({ onLogout }) => {
         </div>
         {isOpen && (
           <div
-            className="absolute bg-white shadow-md rounded mt-2"
+            className="absolute mt-2 rounded bg-white shadow-md"
             style={{ right: "0", top: "100%", minWidth: "150px", zIndex: 10 }}
           >
-            <ul className=" ">
-              <div className="flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200">
-                <img src={Profile} alt="profile" className="h-5 w-5 mr-1" />
-                <li className=" font-normal">Profile</li>
+            <ul>
+              <div className="flex cursor-pointer items-center px-3 py-2 hover:bg-gray-200">
+                <img src={Profile} alt="profile" className="mr-1 h-5 w-5" />
+                <li className="font-normal">Profile</li>
               </div>
-              <div className="flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200">
-                <img src={Setting} alt="profile" className="h-5 w-5 mr-1" />
-                <li className=" font-normal">Settings</li>
+              <div className="flex cursor-pointer items-center px-3 py-2 hover:bg-gray-200">
+                <img src={Setting} alt="profile" className="mr-1 h-5 w-5" />
+                <li className="font-normal">Settings</li>
               </div>
-              <div className="flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200">
-                <img src={Help} alt="profile" className="h-5 w-5 mr-1" />
-                <li className=" font-normal">Help % Support</li>
+              <div className="flex cursor-pointer items-center px-3 py-2 hover:bg-gray-200">
+                <img src={Help} alt="profile" className="mr-1 h-5 w-5" />
+                <li className="font-normal">Help & Support</li>
               </div>
               <div
                 onClick={onLogout}
-                className="flex items-center py-2 px-3 cursor-pointer hover:bg-gray-200"
+                className="flex cursor-pointer items-center px-3 py-2 hover:bg-gray-200"
               >
-                <img src={LogOut} alt="profile" className="h-5 w-5 mr-1" />
-                <li className=" font-normal">Logout</li>
+                <img src={LogOut} alt="profile" className="mr-1 h-5 w-5" />
+                <li className="font-normal">Logout</li>
               </div>
             </ul>
           </div>
         )}
       </div>
+
+      {/* Sidebar for Small Screens */}
+      {isSidebarOpen && (
+        <div className="fixed inset-0 z-20 flex bg-black bg-opacity-50">
+          <div className="h-full w-64 bg-white p-4 shadow-md">
+            <button
+              className="mb-4 w-full text-right text-xl font-bold"
+              onClick={toggleSidebar}
+            >
+              &times;
+            </button>
+            {NavItems.map((item, index) => (
+              <NavLink
+                key={index}
+                to={item.path}
+                className={({ isActive }) =>
+                  `block px-4 py-2 text-sm font-medium ${
+                    isActive ? "bg-gray-200" : ""
+                  }`
+                }
+                onClick={toggleSidebar}
+              >
+                <img
+                  src={item.imgSrc}
+                  alt={item.label}
+                  className="mr-2 inline h-5 w-5"
+                />
+                {item.label}
+              </NavLink>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
