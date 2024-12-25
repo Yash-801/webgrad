@@ -7,7 +7,7 @@ import bell from "../assets/bell.svg";
 import logo from "../assets/logo.jpg";
 import downarrow from "../assets/downarrow.svg";
 import grad from "../assets/grad.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import LogOut from "../assets/LogOut.svg";
 import Help from "../assets/Help.svg";
 import Profile from "../assets/Profile.svg";
@@ -27,18 +27,18 @@ const Navbar = ({ onLogout }) => {
 
   const toggleDropdown = () => setIsOpen(!isOpen);
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+  const navigate = useNavigate();
 
   const NavItems = [
     { imgSrc: home, label: "Home", path: "/" },
-    { imgSrc: job, label: "JobList", path: "/JobList" },
+    { imgSrc: job, label: "Find Jobs", path: "/FindJobs" },
     { imgSrc: job, label: "Companies", path: "/companies" },
     { imgSrc: list, label: "MyJob", path: "/MyJob" },
     { imgSrc: message, label: "Message", path: "/Messages" },
   ];
 
   return (
-    <div className="navbar relative flex w-full items-center justify-between bg-white px-8 py-7">
-      {/* Logo Section */}
+    <div className="container-fluid navbar relative flex w-full items-center justify-between bg-white px-[4%] py-7">
       <div className="aiimg flex items-center">
         <button
           className="mr-4 text-xl focus:outline-none lg:hidden"
@@ -46,10 +46,14 @@ const Navbar = ({ onLogout }) => {
         >
           <FaBars />
         </button>
-        <img src={grad} alt="image" className="aiimg2" />
+        <img
+          onClick={() => navigate("/")}
+          src={grad}
+          alt="image"
+          className="aiimg2"
+        />
       </div>
 
-      {/* Desktop Nav Items */}
       <div className="options hidden flex-row items-center justify-center lg:flex">
         {NavItems.map((item, index) => (
           <NavLink
@@ -63,7 +67,6 @@ const Navbar = ({ onLogout }) => {
         ))}
       </div>
 
-      {/* Notification and Profile Section */}
       <div className="d flex">
         <div className="d mr-3 flex">
           <img
@@ -74,12 +77,16 @@ const Navbar = ({ onLogout }) => {
         </div>
         <div
           onClick={toggleDropdown}
-          className="toglmenu d flex items-center justify-between hover:cursor-pointer"
+          className="flex items-center justify-between hover:cursor-pointer md:rounded-[20px] md:border-[1px] md:border-[#004d7e]"
         >
-          <div className="d mr-2 flex h-9 w-9 items-center overflow-auto">
-            <img src={logo} alt="logo" className="proimg mx-1 h-7 w-7" />
+          <div className="flex h-9 items-center md:mr-2">
+            <img
+              src={logo}
+              alt="logo"
+              className="mx-1 h-[30px] w-[30px] rounded-full"
+            />
           </div>
-          <div>
+          <div className="hidden md:block">
             <p className="text-xs font-semibold">Zadafiya</p>
           </div>
           <div className="mx-1">
@@ -116,7 +123,6 @@ const Navbar = ({ onLogout }) => {
         )}
       </div>
 
-      {/* Sidebar for Small Screens */}
       {isSidebarOpen && (
         <div className="fixed inset-0 z-20 flex bg-black bg-opacity-50">
           <div className="h-full w-64 bg-white p-4 shadow-md">
@@ -131,7 +137,7 @@ const Navbar = ({ onLogout }) => {
                 key={index}
                 to={item.path}
                 className={({ isActive }) =>
-                  `block px-4 py-2 text-sm font-medium ${
+                  `block px-4 py-2 text-sm font-medium hover:bg-gray-200 ${
                     isActive ? "bg-gray-200" : ""
                   }`
                 }

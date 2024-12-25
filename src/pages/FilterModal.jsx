@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const FilterModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -56,15 +57,12 @@ const FilterModal = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-20 flex h-full items-center justify-center overflow-auto">
-      {/* Blur Background */}
       <div
         className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm"
         onClick={onClose}
       ></div>
 
-      {/* Modal Content */}
       <div className="relative z-30 mb-5 mt-20 transform-none rounded-lg bg-white shadow-lg">
-        {/* Header */}
         <div className="flex items-center justify-between border-b p-6">
           <h2 className="text-base font-semibold">Filters</h2>
           <button className="text-gray-600 hover:text-black" onClick={onClose}>
@@ -72,23 +70,22 @@ const FilterModal = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        {/* Filter Options */}
         <div className="grid grid-cols-3 gap-x-12 gap-y-12 p-6">
           {filterOptions.map((filter, index) => (
             <div key={index} className="flex flex-col">
               <p className="my-4 font-semibold">{filter.title}</p>
               {filter.isButtonGroup ? (
                 <div className="mb-4 flex">
-                  <button className="border border-r-0 border-[#353538] px-3 py-2 text-xs text-[#353538]">
-                    Monthly
-                  </button>
-                  <button className="border border-[#353538] px-3 py-2 text-xs text-[#353538]">
+                  <NavLink className="border border-[#353538] px-3 py-2 text-xs text-[#353538]">
                     Yearly
-                  </button>
+                  </NavLink>
+                  <NavLink className="border border-[#353538] px-3 py-2 text-xs text-[#353538]">
+                    Yearly
+                  </NavLink>
                 </div>
               ) : null}
               {filter.options.map((option, idx) => (
-                <div className="flex gap-x-2" key={idx}>
+                <div className="flex gap-x-2" key={`${filter.title}-${idx}`}>
                   <input
                     type="radio"
                     name={filter.title}
@@ -109,7 +106,7 @@ const FilterModal = ({ isOpen, onClose }) => {
         <div className="grid grid-cols-2 gap-x-12 p-5">
           <div>
             {industries.map((id) => (
-              <div className="mb-3 flex items-center">
+              <div className="mb-3 flex items-center" key={industries.id}>
                 <input type="checkbox" name="{id.name}" value={id.name} />
                 <label className="ml-2 text-sm text-gray-500">{id.name}</label>
               </div>
@@ -117,7 +114,7 @@ const FilterModal = ({ isOpen, onClose }) => {
           </div>
           <div>
             {SecondIndustries.map((id) => (
-              <div className="mb-3 flex items-center">
+              <div className="mb-3 flex items-center" key={industries.id}>
                 <input type="checkbox" name="{id.name}" value={id.name} />
                 <label className="ml-2 text-sm text-gray-500">{id.name}</label>
               </div>

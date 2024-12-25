@@ -8,6 +8,7 @@ import Time from "../assets/Time.svg";
 import Bookmark from "../assets/Bookmark.svg";
 import FilterModal from "./FilterModal";
 import { useState } from "react";
+import { TextField } from "@mui/material";
 
 const jobData = [
   {
@@ -122,7 +123,7 @@ const jobData = [
   },
 ];
 
-const JobList = () => {
+const FindJobs = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const toggleFilter = () => {
@@ -142,22 +143,23 @@ const JobList = () => {
         </p>
       </div>
       <div className="mb-4 flex w-full flex-col lg:flex-row">
-        <div className="mb-4 flex-auto lg:mb-0 lg:w-1/2">
-          <input
-            type="text"
-            placeholder="What job are you looking for?"
-            className="h-10 w-full border border-gray-300 p-2 text-xs"
+        <div className="mb-4 flex-auto lg:mb-0 lg:w-[44%]">
+          <TextField
+            sx={{ width: "100%", borderRadius: "1rem" }}
+            label="what position are you looking for?"
+            size="small"
+            className="h-10 border border-gray-300 p-2 text-xs"
           />
         </div>
-        <div className="flex w-full flex-col gap-4 sm:flex-row lg:w-auto">
-          <input
-            type="text"
-            placeholder="Skill"
+        <div className="flex w-full flex-col gap-4 sm:flex-row min-[1023.20px]:ml-4 lg:w-auto">
+          <TextField
+            label="skills"
+            size="small"
             className="h-10 w-full border border-gray-300 p-2 text-xs sm:w-auto"
           />
-          <input
-            type="text"
-            placeholder="Location"
+          <TextField
+            label="location"
+            size="small"
             className="h-10 w-full border border-gray-300 p-2 text-xs sm:w-auto"
           />
           <button className="h-max w-max bg-[#004473] px-5 py-2.5 text-sm text-white">
@@ -191,7 +193,7 @@ const JobList = () => {
               <img
                 src={Bussins}
                 alt={`${job.title} logo`}
-                className="h-16 w-16 rounded-full object-cover"
+                className="w-14sm:h-16 h-14 rounded-full object-cover sm:w-16"
               />
               <div className="flex-1">
                 <h2 className="text-lg font-medium sm:text-xl">{job.title}</h2>
@@ -264,4 +266,4 @@ const JobList = () => {
   );
 };
 
-export default JobList;
+export default FindJobs;
