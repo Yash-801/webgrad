@@ -3,12 +3,12 @@
   padding: 0;
 }
 
-.aiimg2 {
-  max-height: 40px;
-  max-width: 250px;
+/* .aiimg2 {
+  max-height: auto;
+  max-width: 100px;
   width: 100%;
   cursor: pointer;
-}
+} */
 
 .navare {
   height: 5rem;
@@ -108,14 +108,14 @@
   font-weight: 500;
   font-family: "Poppins", sans-serif;
   color: #3d589b;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .cardinfo3 {
   font-size: 13px;
   font-family: "Poppins", sans-serif;
   color: #3d589b;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .cardinfobtn {

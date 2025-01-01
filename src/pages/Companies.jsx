@@ -7,6 +7,7 @@ import { useState } from "react";
 import Car2 from "../assets/Car2.jpeg";
 import EmployerDash from "../assets/EmployerDash.png";
 import Aeroplan from "../assets/Aeroplan.jpg";
+import { useNavigate } from "react-router-dom";
 
 const jobData = [
   {
@@ -241,6 +242,7 @@ const jobData = [
 const Companies = () => {
   const pageSize = 10;
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
 
   const startIndex = (currentPage - 1) * pageSize;
   const currentCompanies = jobData.slice(startIndex, startIndex + pageSize);
@@ -280,15 +282,15 @@ const Companies = () => {
       </div>
 
       <div className="flex flex-col bg-[#FAFAFA] p-4 sm:p-6 lg:flex-row">
-        {/* Left Section */}
         <div className="w-full flex-auto lg:w-3/4">
           <div className="mb-2 flex items-center justify-between">
             <p className="text-xl font-medium sm:text-2xl md:text-3xl">30</p>
           </div>
           {currentCompanies.map((job) => (
             <div
+              onClick={() => navigate(`/Compni-Detail /${job.id}`)}
               key={job.id}
-              className="mb-4 flex flex-col items-start space-x-0 space-y-4 rounded-lg border bg-white p-4 shadow-md md:flex-row md:space-x-4 md:space-y-0"
+              className="mb-4 flex cursor-pointer flex-col items-start space-x-0 space-y-4 rounded-lg border bg-white p-4 shadow-md md:flex-row md:space-x-4 md:space-y-0"
             >
               <img
                 src={job.Image}
@@ -312,7 +314,7 @@ const Companies = () => {
                     {job.salary}
                   </span>
                 </div>
-                <p className="mb-4 text-xs text-[#707079] sm:text-sm sm:text-clip">
+                <p className="mb-4 text-xs text-[#707079] sm:text-clip sm:text-sm">
                   {job.description}
                 </p>
               </div>
@@ -341,7 +343,6 @@ const Companies = () => {
           </div>
         </div>
 
-        {/* Right Section */}
         <div className="mt-4 w-full lg:ml-5 lg:mt-0 lg:w-1/4">
           <div className="mb-4 bg-white p-4">
             <div className="mb-4">

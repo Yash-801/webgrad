@@ -92,7 +92,10 @@ const FilterModal = ({ isOpen, onClose }) => {
                     value={option}
                     id={option}
                   />
-                  <label className="text-sm text-[#71717a]" htmlFor={option}>
+                  <label
+                    className="cursor-pointer text-sm text-[#71717a]"
+                    htmlFor={option}
+                  >
                     {option}
                   </label>
                 </div>
@@ -108,7 +111,9 @@ const FilterModal = ({ isOpen, onClose }) => {
             {industries.map((id) => (
               <div className="mb-3 flex items-center" key={industries.id}>
                 <input type="checkbox" name="{id.name}" value={id.name} />
-                <label className="ml-2 text-sm text-gray-500">{id.name}</label>
+                <label className="ml-2 cursor-pointer text-sm text-gray-500">
+                  {id.name}
+                </label>
               </div>
             ))}
           </div>
@@ -116,7 +121,9 @@ const FilterModal = ({ isOpen, onClose }) => {
             {SecondIndustries.map((id) => (
               <div className="mb-3 flex items-center" key={industries.id}>
                 <input type="checkbox" name="{id.name}" value={id.name} />
-                <label className="ml-2 text-sm text-gray-500">{id.name}</label>
+                <label className="ml-2 cursor-pointer text-sm text-gray-500">
+                  {id.name}
+                </label>
               </div>
             ))}
           </div>

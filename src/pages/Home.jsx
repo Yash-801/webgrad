@@ -1,7 +1,5 @@
 import React from "react";
 import AiCover2 from "../assets/AiCover2.png";
-import frontend from "../assets/frontend.png";
-import car from "../assets/car.jpeg";
 import compny from "../assets/compny.jpg";
 import Dp from "../assets/Dp.jpg";
 import { useNavigate } from "react-router-dom";
@@ -9,75 +7,49 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const jobData = [
     {
-      imgSrc: frontend,
-      title: "Website WordPress",
-      company: "Employer 2810",
-      location: "test2, test 2",
+      imgSrc: compny,
+      title: "WT - All candidates - Quick Apply",
+      company: "at GradSearch",
+      location: "Ples quick apply",
       id: 1,
     },
     {
-      imgSrc: frontend,
-      title: "Frontend Developer",
-      company: "Polaris Software Solution",
-      location: "test",
+      imgSrc: compny,
+      title: "Aftyn - all vis - quick apply",
+      company: "at aftern compny",
+      location: "a",
       id: 2,
     },
     {
-      imgSrc: frontend,
-      title: "Android Developer",
-      company: "Polaris Software Solution",
-      location: "test2",
+      imgSrc: compny,
+      title: "aftn all visible quick apply",
+      company: "at aftern compny",
+      location: "Design,Branding",
       id: 3,
     },
     {
-      imgSrc: car,
-      title: "QA Tester",
-      company: "2910 Company",
-      location: "test2",
+      imgSrc: compny,
+      title: "Job for all",
+      company: "at Morn Org",
+      location: "job description,Consolidating contracts,internal audit",
       id: 4,
-    },
-    {
-      imgSrc: compny,
-      title: "WT - All candidates",
-      company: "GradSearch",
-      location: "Pls quick apply",
-      id: 5,
-    },
-    {
-      imgSrc: compny,
-      title: "Shortlist Test",
-      company: "Aftrn Company",
-      location: "job des",
-      id: 6,
-    },
-    {
-      imgSrc: compny,
-      title: "Aftyn - All Vis",
-      company: "Aftrn Company",
-      location: "a",
-      id: 7,
-    },
-    {
-      imgSrc: compny,
-      title: "Aftn - Close Job",
-      company: "Aftrn Company",
-      location: "job descript",
-      id: 8,
     },
   ];
   const navigate = useNavigate();
+
   const JobCard = ({ imgSrc, title, company, location, id }) => (
     <div
       className="jobcards p-4"
-      onClick={() => navigate(`/company-detail/${id}`)}
+      key={id}
+      onClick={() => navigate(`/job-detail/${id}`)}
     >
       <div className="flex items-center justify-between">
         <img src={imgSrc} alt={title} className="h-12 w-12" />
         <p className="fulltimetxt text-base">Full Time</p>
       </div>
       <div className="mt-3">
-        <p className="cardinfo1">{title}</p>
-        <p className="cardinfo2">at {company}</p>
+        <p className="cardinfo1 line-clamp-1">{title}</p>
+        <p className="cardinfo2">{company}</p>
         <p className="cardinfo3">{location}</p>
       </div>
       <button className="cardinfobtn">More Details</button>
@@ -118,7 +90,14 @@ const Home = () => {
                 improve your chances of securing a dream role.
               </p>
             </div>
-            <button className="dash2btn mt-4 sm:mt-0">My Profile</button>
+            <button
+              className="dash2btn mt-4 sm:mt-0"
+              onClick={() => {
+                navigate("/profile");
+              }}
+            >
+              My Profile
+            </button>
           </div>
 
           <div className="mt-3 bg-white p-5">

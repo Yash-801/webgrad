@@ -50,7 +50,7 @@ const Navbar = ({ onLogout }) => {
           onClick={() => navigate("/")}
           src={grad}
           alt="image"
-          className="aiimg2"
+          className="aiimg2 h-auto max-w-40 cursor-pointer md:h-auto md:max-w-56"
         />
       </div>
 
@@ -73,6 +73,7 @@ const Navbar = ({ onLogout }) => {
             src={bell}
             alt="bell"
             className="h-8 w-8 pt-2 hover:cursor-pointer"
+            onClick={() => navigate("/Notification")}
           />
         </div>
         <div
@@ -99,15 +100,24 @@ const Navbar = ({ onLogout }) => {
             style={{ right: "0", top: "100%", minWidth: "150px", zIndex: 10 }}
           >
             <ul>
-              <div className="flex cursor-pointer items-center px-3 py-2 hover:bg-gray-200">
+              <div
+                onClick={() => navigate("/profile")}
+                className="flex cursor-pointer items-center px-3 py-2 hover:bg-gray-200"
+              >
                 <img src={Profile} alt="profile" className="mr-1 h-5 w-5" />
                 <li className="font-normal">Profile</li>
               </div>
-              <div className="flex cursor-pointer items-center px-3 py-2 hover:bg-gray-200">
+              <div
+                onClick={() => navigate("/Setting")}
+                className="flex cursor-pointer items-center px-3 py-2 hover:bg-gray-200"
+              >
                 <img src={Setting} alt="profile" className="mr-1 h-5 w-5" />
                 <li className="font-normal">Settings</li>
               </div>
-              <div className="flex cursor-pointer items-center px-3 py-2 hover:bg-gray-200">
+              <div
+                onClick={() => navigate("/Help")}
+                className="flex cursor-pointer items-center px-3 py-2 hover:bg-gray-200"
+              >
                 <img src={Help} alt="profile" className="mr-1 h-5 w-5" />
                 <li className="font-normal">Help & Support</li>
               </div>
@@ -124,7 +134,7 @@ const Navbar = ({ onLogout }) => {
       </div>
 
       {isSidebarOpen && (
-        <div className="fixed inset-0 z-20 flex bg-black bg-opacity-50">
+        <div className="z-1 fixed inset-0 flex bg-black bg-opacity-50">
           <div className="h-full w-64 bg-white p-4 shadow-md">
             <button
               className="mb-4 w-full text-right text-xl font-bold"

@@ -6,15 +6,29 @@ const useLastPageTracker = () => {
   const location = useLocation();
 
   useEffect(() => {
-    localStorage.setItem("lastVisitedPage", location.pathname);
-  }, [location]);
+    if (location.pathname !== "/") {
+      sessionStorage.setItem("currentPage", location.pathname);
+    }
+
+    const handlePopState = () => {
+      const previousPage = window.history.state?.usr?.pathname || "/";
+      sessionStorage.setItem("currentPage", previousPage);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [location.pathname]);
 
   useEffect(() => {
-    const lastVisitedPage = localStorage.getItem("lastVisitedPage");
-    if (lastVisitedPage && lastVisitedPage !== "/") {
-      navigate(lastVisitedPage);
+    const savedPage = sessionStorage.getItem("currentPage");
+
+    if (savedPage && window.performance && performance.navigation.type === 1) {
+      navigate(savedPage);
     }
-  }, [navigate]);
+  }, []);
 };
 
 export default useLastPageTracker;
